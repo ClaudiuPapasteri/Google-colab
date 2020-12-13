@@ -1,11 +1,11 @@
-﻿################################ INFO ############################################################
+################################ INFO ############################################################
 # ~ Need to save in UTF-8 encoding and File/"Reopen with Encoding" to preserve Romanian characters.
 # ~ Regarding the above mentioned, the script should be sourced as follows:
-#       source_encod <- function(f, encoding = 'UTF-8') {
+#     source_encod <- function(f, encoding = 'UTF-8') {
 #       l <- readLines(f, encoding = encoding)
 #       eval(parse(text = l), envir = .GlobalEnv)
-#       }
-
+#       }    # source(x, encoding = 'UTF-8') doesn't work every time
+#  
 # ~ 
 # ~ 
 ##################################################################################################
@@ -181,7 +181,7 @@ DataPCLAlg <-
   Data %>% 
   dplyr::select(tidyselect::all_of(indexPCL)) %>% 
   dplyr::mutate_all(
-    funs(case_when(
+    ~(case_when(
       . >=2 ~ 1,
       # . <2 ~ 0,
       is.na(.) ~ 0,
@@ -208,7 +208,7 @@ DataPCLAlg_subclin <-
   Data %>% 
   dplyr::select(tidyselect::all_of(indexPCL)) %>% 
   dplyr::mutate_all(
-    funs(case_when(
+    ~(case_when(
       . >=2 ~ 1,
       # . <2 ~ 0,
       is.na(.) ~ 0,
