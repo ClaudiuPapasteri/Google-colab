@@ -4,7 +4,14 @@
 #     source_encod <- function(f, encoding = 'UTF-8') {
 #       l <- readLines(f, encoding = encoding)
 #       eval(parse(text = l), envir = .GlobalEnv)
-#       }    # source(x, encoding = 'UTF-8') doesn't work every time
+#     }    # source(x, encoding = 'UTF-8') # doesn't work every time
+#
+#     source_github_encod <- function(url, encoding = 'UTF-8') {
+#       raw <- paste(url, "?raw=TRUE", sep = "", collapse = "")
+#       l <- readLines(raw, encoding = encoding)
+#       eval(parse(text = l), envir = .GlobalEnv)
+#     }       #devtools::source_url(x, encoding = 'UTF-8')   #  doesn't work every time
+#
 #  
 # ~ 
 # ~ 
